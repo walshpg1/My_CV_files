@@ -1,0 +1,528 @@
+/* ================================================================
+   Paddy Walsh CV — Portfolio Stylesheet
+   Task 5: Improved responsive design, print layout, accessibility
+   ================================================================ */
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ---- Design tokens ---- */
+:root {
+  --navy:        #0c1f3a;
+  --navy-mid:    #163560;
+  --blue:        #1d5faf;
+  --blue-accent: #2878cc;
+  --blue-pale:   #eaf2fc;
+  --blue-border: #b8d4f0;
+  --gold:        #8a5c00;
+  --gold-bg:     #fff8e1;
+  --gold-border: #d4b040;
+  --text-dark:   #111827;
+  --text-mid:    #374151;
+  --text-muted:  #6b7280;
+  --white:       #ffffff;
+  --sidebar-w:   268px;
+  --page-max:    1080px;
+}
+
+/* ================================================================
+   BASE
+   ================================================================ */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-dark);
+  background: #d8e4f0;
+  min-height: 100vh;
+}
+
+a { color: #2878cc; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- Skip navigation ---- */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--blue);
+  color: var(--white);
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 13px;
+  z-index: 999;
+  border-radius: 0 0 4px 0;
+}
+.skip-nav:focus { top: 0; }
+
+/* ---- Focus styles ---- */
+:focus-visible {
+  outline: 3px solid var(--blue-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ================================================================
+   LAYOUT
+   ================================================================ */
+.cv-wrapper {
+  display: flex;
+  min-height: 100vh;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* ================================================================
+   SIDEBAR
+   ================================================================ */
+.sidebar {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  background: var(--navy);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Profile header */
+.profile-header {
+  background: var(--navy-mid);
+  padding: 32px 20px 20px;
+  border-bottom: 3px solid var(--blue-accent);
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.profile-headline {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  color: var(--blue-accent);
+  line-height: 1.7;
+}
+
+/* Sidebar sections */
+.s-section {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.s-title {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.2px;
+  color: var(--blue-accent);
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Contact */
+.contact-list { list-style: none; }
+.contact-list li {
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 2px 0;
+  color: rgba(255, 255, 255, 0.82);
+}
+.contact-list a { color: #7ec8e3; }
+.contact-list a:hover { color: var(--white); }
+
+/* Social links */
+.social-list { list-style: none; }
+.social-link {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 3px 0;
+  letter-spacing: 0.3px;
+  transition: color 0.15s;
+}
+.social-link:hover { color: var(--white); text-decoration: none; }
+.social-list li + li { margin-top: 2px; }
+
+/* Skill tags */
+.tag-list { list-style: none; }
+.tag-list li {
+  font-size: 11.5px;
+  padding: 3px 8px;
+  margin: 3px 0;
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 3px solid var(--blue-accent);
+  color: rgba(255, 255, 255, 0.88);
+  border-radius: 0 3px 3px 0;
+  line-height: 1.4;
+}
+
+/* Education */
+.edu-item { margin-bottom: 10px; }
+.edu-item:last-child { margin-bottom: 0; }
+.edu-item strong {
+  display: block;
+  font-size: 11.5px;
+  color: var(--white);
+  line-height: 1.35;
+}
+.edu-item span {
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Certifications */
+.cert-list { list-style: none; }
+.cert-list li {
+  font-size: 11.5px;
+  padding: 3px 0;
+  color: rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  line-height: 1.4;
+}
+.cert-list li:last-child { border-bottom: none; }
+
+/* ================================================================
+   MAIN CONTENT
+   ================================================================ */
+.main-content {
+  flex: 1;
+  padding: 26px 36px 40px;
+  min-width: 0;
+}
+
+/* Notice banner */
+.notice-banner {
+  background: var(--blue-pale);
+  border: 1px solid var(--blue-border);
+  border-left: 4px solid var(--blue);
+  padding: 9px 14px;
+  font-size: 12px;
+  color: var(--text-mid);
+  margin-bottom: 16px;
+  border-radius: 0 4px 4px 0;
+  line-height: 1.5;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 8px 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: inherit;
+  line-height: 1.4;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+.btn-primary:hover { background: var(--navy-mid); border-color: var(--navy-mid); text-decoration: none; color: var(--white); }
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--blue);
+  border-color: var(--blue);
+}
+.btn-secondary:hover { background: var(--blue-pale); text-decoration: none; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-mid);
+  border-color: #d1d9e0;
+}
+.btn-ghost:hover { background: #f4f6f8; border-color: #b0bcc8; text-decoration: none; }
+
+/* Section headings */
+.cv-section { margin-bottom: 22px; }
+
+.section-title {
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: var(--navy-mid);
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--blue);
+  margin-bottom: 12px;
+}
+
+/* Summary */
+.summary-text {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-dark);
+}
+
+/* Achievements */
+.achieve-list { list-style: none; padding: 0; }
+.achieve-list li {
+  padding: 5px 0 5px 20px;
+  position: relative;
+  font-size: 13.5px;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--blue-pale);
+  line-height: 1.55;
+}
+.achieve-list li:last-child { border-bottom: none; }
+.achieve-list li::before {
+  content: '\25B6';
+  position: absolute;
+  left: 2px;
+  color: var(--blue);
+  font-size: 8px;
+  top: 9px;
+}
+
+/* Jobs */
+.job {
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e4eaf2;
+}
+.job:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+/* Hero job highlight */
+.job-hero {
+  background: #f6faff;
+  border: 1px solid var(--blue-border);
+  border-left: 4px solid var(--blue);
+  padding: 14px 16px;
+  border-radius: 0 6px 6px 0;
+  margin-left: -4px;
+  margin-bottom: 18px;
+}
+
+.job-hdr {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.job-hdr-left h3 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--navy-mid);
+  line-height: 1.3;
+}
+
+.job-company {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--blue-accent);
+  margin-top: 2px;
+}
+
+.job-dates {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  background: var(--blue-pale);
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.award-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-border);
+  padding: 3px 10px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+.job-bullets { list-style: none; padding: 0; }
+.job-bullets li {
+  padding: 2px 0 2px 18px;
+  position: relative;
+  font-size: 13px;
+  line-height: 1.58;
+  color: var(--text-dark);
+}
+.job-bullets li::before {
+  content: '\2013';
+  position: absolute;
+  left: 4px;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+/* ================================================================
+   RESPONSIVE — TABLET
+   ================================================================ */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 230px; }
+  .main-content { padding: 22px 24px 36px; }
+  .profile-name { font-size: 21px; }
+}
+
+/* ================================================================
+   RESPONSIVE — MOBILE
+   ================================================================ */
+@media (max-width: 640px) {
+  .cv-wrapper { flex-direction: column; }
+
+  .sidebar {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .profile-header { padding: 24px 16px 16px; }
+  .s-section { padding: 12px 16px; }
+
+  .main-content { padding: 18px 16px 28px; }
+
+  .action-buttons { flex-direction: column; }
+  .btn { justify-content: center; text-align: center; }
+
+  .job-hdr {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .job-dates { align-self: flex-start; }
+
+  .job-hero { margin-left: 0; }
+}
+
+/* ================================================================
+   PRINT — TASK 5: clean A4 printout of the portfolio page
+   Hides sidebar dark bg; renders content as single clean column
+   (use ats-cv.html for the official PDF export)
+   ================================================================ */
+@media print {
+  body { background: white; font-size: 11.5px; color: #111; }
+
+  .cv-wrapper {
+    box-shadow: none;
+    max-width: 100%;
+    flex-direction: row;
+  }
+
+  /* Suppress interactive elements */
+  .skip-nav,
+  .notice-banner,
+  .action-buttons { display: none !important; }
+
+  /* Sidebar: shrink, strip color, show as plain-text column */
+  .sidebar {
+    width: 160px;
+    min-width: 160px;
+    background: white !important;
+    color: var(--text-dark) !important;
+    border-right: 2px solid var(--navy);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .profile-header {
+    background: var(--navy-mid) !important;
+    padding: 16px 12px 12px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .profile-name { font-size: 16px; }
+  .profile-headline { font-size: 8.5px; }
+
+  .s-section { padding: 10px 12px; }
+  .s-title {
+    font-size: 7.5px;
+    color: var(--navy) !important;
+    border-bottom-color: var(--navy) !important;
+  }
+
+  .tag-list li {
+    font-size: 9.5px;
+    background: #eef3fa !important;
+    border-left-color: var(--blue) !important;
+    color: var(--text-dark) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .contact-list li { font-size: 9.5px; color: var(--text-dark) !important; }
+  .contact-list a { color: var(--navy) !important; }
+  .cert-list li { font-size: 9.5px; color: var(--text-dark) !important; }
+  .edu-item strong { font-size: 9.5px; color: var(--text-dark) !important; }
+  .edu-item span { font-size: 9px; color: var(--text-mid) !important; }
+  .social-link { font-size: 9.5px; color: var(--navy) !important; }
+
+  /* Main content */
+  .main-content { padding: 18px 20px 20px; }
+  .section-title { font-size: 8.5px; }
+  .summary-text { font-size: 10.5px; line-height: 1.45; }
+  .achieve-list li { font-size: 10.5px; line-height: 1.4; padding: 3px 0 3px 18px; }
+  .job-hdr-left h3 { font-size: 10.5px; }
+  .job-company { font-size: 10px; }
+  .job-dates { font-size: 9.5px; background: var(--blue-pale) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .job-bullets li { font-size: 10px; line-height: 1.38; }
+
+  .job-hero {
+    background: #f6faff !important;
+    border-left-color: var(--blue) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .award-badge {
+    font-size: 9px;
+    background: var(--gold-bg) !important;
+    border-color: var(--gold-border) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Break control */
+  .job,
+  .job-hero,
+  .cv-section { break-inside: avoid; }
+
+  .section-title { break-after: avoid; }
+
+  @page {
+    size: A4;
+    margin: 12mm 12mm;
+  }
+}

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paddy Walsh – MES Engineer CV</title>
+  <style>
+    /* ============================================================
+       Paddy Walsh — ATS-Friendly Word-Style CV
+       Task 1: Optimised for 2-page A4 print
+       Task 2: 3-column skills matrix
+       Task 3: 5 key achievements
+       Task 4: Strong visual hierarchy, no tables, no graphics
+       To export PDF: File > Print > Save as PDF in Chrome/Edge
+       ============================================================ */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #0f2a52;
+      --blue:      #1e5fa8;
+      --blue-bg:   #e8f0fa;
+      --blue-mid:  #1a4a88;
+      --gold:      #8a5c00;
+      --gold-bg:   #fffae8;
+      --text:      #111111;
+      --muted:     #444444;
+      --border:    #c0d4ec;
+      --rule:      #d0dff0;
+    }
+
+    /* ---- Base ---- */
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.42;
+      color: var(--text);
+      background: #dce6f0;
+    }
+
+    /* ---- Page shell (A4-width Word doc look) ---- */
+    .page {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 36px 46px 40px;
+      box-shadow: 0 3px 20px rgba(0,0,0,0.14);
+    }
+
+    /* ---- Print controls (hidden on print) ---- */
+    .print-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #dde5f0;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 7px 16px;
+      font-size: 10.5pt;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+      text-decoration: none;
+      transition: background 0.15s;
+      line-height: 1.4;
+    }
+    .btn-blue  { background: var(--blue); color: #fff; }
+    .btn-blue:hover  { background: var(--navy); }
+    .btn-outline { background: #fff; color: var(--blue); border: 2px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue-bg); }
+    .btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+    /* ============================================================
+       CV HEADER
+       ============================================================ */
+    .cv-header {
+      border-bottom: 3px solid var(--navy);
+      padding-bottom: 11px;
+      margin-bottom: 0;
+    }
+
+    .cv-name {
+      font-size: 26pt;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .cv-tagline {
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 6px;
+      letter-spacing: 0.2px;
+    }
+
+    .cv-contact {
+      font-size: 10pt;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 20px;
+    }
+
+    .cv-contact a { color: var(--navy); text-decoration: none; }
+
+    /* ============================================================
+       SECTION HEADINGS
+       ============================================================ */
+    h2.sh {
+      font-size: 10.5pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      color: var(--navy);
+      background: var(--blue-bg);
+      border-left: 4px solid var(--blue);
+      padding: 4px 10px;
+      margin-top: 14px;
+      margin-bottom: 8px;
+    }
+
+    /* ============================================================
+       PROFESSIONAL SUMMARY
+       ============================================================ */
+    .summary p {
+      font-size: 10.5pt;
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       KEY ACHIEVEMENTS
+       ============================================================ */
+    .achieve {
+      list-style: none;
+      padding: 0;
+    }
+
+    .achieve li {
+      font-size: 10.5pt;
+      line-height: 1.44;
+      padding: 2px 0 2px 18px;
+      position: relative;
+    }
+
+    .achieve li::before {
+      content: '\25C6';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-size: 7.5pt;
+      top: 4px;
+    }
+
+    /* ============================================================
+       TASK 2 — THREE-COLUMN SKILLS MATRIX
+       ============================================================ */
+    .skills-cols {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .skill-col {
+      flex: 1;
+      border-right: 1px solid var(--border);
+    }
+
+    .skill-col:last-child {
+      border-right: none;
+    }
+
+    .skill-col-head {
+      font-size: 9.5pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      color: var(--navy);
+      background: var(--blue-bg);
+      padding: 5px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-col-list {
+      list-style: none;
+      padding: 6px 10px 8px;
+    }
+
+    .skill-col-list li {
+      font-size: 10pt;
+      line-height: 1.45;
+      padding: 1.5px 0 1.5px 12px;
+      position: relative;
+      color: var(--text);
+    }
+
+    .skill-col-list li::before {
+      content: '\2022';
+      position: absolute;
+      left: 2px;
+      color: var(--blue);
+      font-size: 10pt;
+    }
+
+    /* ============================================================
+       PROFESSIONAL EXPERIENCE
+       ============================================================ */
+    .job {
+      margin-bottom: 12px;
+    }
+
+    .job-hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .job-title-text {
+      font-size: 11pt;
+      font-weight: 800;
+      color: var(--text);
+      flex: 1;
+      line-height: 1.3;
+    }
+
+    .job-date {
+      font-size: 10pt;
+      color: var(--muted);
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .job-co {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .award-badge {
+      display: inline-block;
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: var(--gold);
+      background: var(--gold-bg);
+      border: 1px solid #d4b040;
+      padding: 2px 9px;
+      border-radius: 2px;
+      margin-bottom: 4px;
+    }
+
+    .job-bullets {
+      list-style: none;
+      padding: 0;
+    }
+
+    .job-bullets li {
+      font-size: 10.5pt;
+      padding: 1.5px 0 1.5px 16px;
+      position: relative;
+      line-height: 1.42;
+    }
+
+    .job-bullets li::before {
+      content: '\2022';
+      position: absolute;
+      left: 4px;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .job-sep {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 9px 0;
+    }
+
+    /* ============================================================
+       EDUCATION
+       ============================================================ */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 10.5pt;
+      padding: 2px 0;
+      gap: 10px;
+    }
+
+    .edu-row strong { color: var(--text); }
+    .edu-row span   { color: var(--muted); white-space: nowrap; font-size: 10pt; }
+
+    /* ============================================================
+       CERTIFICATIONS
+       ============================================================ */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 24px;
+      list-style: none;
+    }
+
+    .cert-grid li {
+      font-size: 10.5pt;
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.42;
+    }
+
+    .cert-grid li::before {
+      content: '\2022';
+      position: absolute;
+      left: 2px;
+      color: var(--blue);
+    }
+
+    /* ============================================================
+       PRINT — TASK 1: 2-PAGE A4 OPTIMISATION
+       ============================================================ */
+    @media print {
+      body {
+        background: #fff;
+        font-size: 10pt;
+        line-height: 1.35;
+      }
+
+      /* Remove double-margin: use only @page margin */
+      .page {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        max-width: 100%;
+      }
+
+      /* Hide browser controls */
+      .print-bar { display: none !important; }
+
+      /* Section headings — compact */
+      h2.sh {
+        font-size: 9.5pt;
+        margin-top: 10px;
+        margin-bottom: 6px;
+        padding: 3px 8px;
+        background: var(--blue-bg) !important;
+        border-left: 4px solid var(--blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* Skills matrix */
+      .skills-cols {
+        border: 1px solid var(--border) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .skill-col-head {
+        font-size: 8.5pt;
+        padding: 3px 8px;
+        background: var(--blue-bg) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .skill-col-list { padding: 4px 8px 6px; }
+      .skill-col-list li { font-size: 9pt; padding: 1px 0 1px 10px; line-height: 1.3; }
+
+      /* Achievements */
+      .achieve li { font-size: 9.5pt; padding: 1px 0 1px 16px; line-height: 1.35; }
+
+      /* Summary */
+      .summary p { font-size: 9.5pt; line-height: 1.4; }
+
+      /* Jobs */
+      .job { margin-bottom: 8px; }
+      .job-sep { margin: 6px 0; }
+      .job-title-text { font-size: 10pt; }
+      .job-co { font-size: 10pt; margin-bottom: 2px; }
+      .job-bullets li { font-size: 9.5pt; padding: 1px 0 1px 14px; line-height: 1.35; }
+
+      /* Award badge */
+      .award-badge {
+        font-size: 8.5pt;
+        background: var(--gold-bg) !important;
+        border: 1px solid #d4b040 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* Education / Certs */
+      .edu-row { font-size: 9.5pt; }
+      .cert-grid li { font-size: 9.5pt; }
+
+      /* Page break control */
+      .job          { break-inside: avoid; }
+      .skills-cols  { break-inside: avoid; }
+      .achieve      { break-inside: avoid; }
+      .cert-grid    { break-inside: avoid; }
+      h2.sh         { break-after: avoid; }
+
+      /* A4 page margins — these are the ONLY margins (no .page padding) */
+      @page {
+        size: A4;
+        margin: 14mm 16mm;
+      }
+    }
+
+    /* ============================================================
+       RESPONSIVE — screen only
+       ============================================================ */
+    @media (max-width: 640px) {
+      .page { padding: 20px 18px; }
+      .cv-name { font-size: 20pt; }
+      .skills-cols { flex-direction: column; }
+      .skill-col { border-right: none; border-bottom: 1px solid var(--border); }
+      .skill-col:last-child { border-bottom: none; }
+      .job-hdr { flex-direction: column; gap: 2px; }
+      .edu-row { flex-direction: column; gap: 1px; }
+      .cert-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ===================== PRINT BAR (hidden on print) ===================== -->
+  <div class="print-bar">
+    <button class="btn btn-blue" onclick="window.print()">Print / Save as PDF</button>
+    <a class="btn btn-outline" href="index.html">Back to Online Profile</a>
+  </div>
+
+  <!-- ===================== CV HEADER ===================== -->
+  <header class="cv-header">
+    <h1 class="cv-name">PADDY WALSH</h1>
+    <p class="cv-tagline">MES Engineer &nbsp;|&nbsp; POMSnet Aquila SME &nbsp;|&nbsp; Pharmaceutical Manufacturing Systems</p>
+    <div class="cv-contact">
+      <span>Collooney, Sligo</span>
+      <span>087 625 1993</span>
+      <span><a href="mailto:Walshpg1@gmail.com">Walshpg1@gmail.com</a></span>
+    </div>
+  </header>
+
+  <!-- ===================== PROFESSIONAL SUMMARY ===================== -->
+  <h2 class="sh">Professional Summary</h2>
+  <div class="summary">
+    <p>
+      MES Engineer and Pharmaceutical Manufacturing Systems Specialist with <strong>20+ years&#8217; experience</strong>
+      in <strong>FDA and HPRA regulated environments</strong>. Deep expertise in <strong>POMSnet Aquila MES</strong>,
+      <strong>Electronic Batch Records (EBR)</strong>, recipe and worksheet development, MES validation, Computer System Validation
+      (CSV), change control, CAPA, and <strong>cGMP compliance</strong>. Lead MES SME for POMSnet Aquila
+      implementation at Abbott Diagnostics Longford. Abbott DVP Award recipient for MES Implementation Excellence,
+      2024. Proven track record delivering across Manufacturing, Quality Assurance, Validation, Engineering and IT.
+    </p>
+  </div>
+
+  <!-- ===================== KEY ACHIEVEMENTS ===================== -->
+  <h2 class="sh">Key Achievements</h2>
+  <ul class="achieve">
+    <li>
+      <strong>Lead MES SME</strong> for Abbott Longford POMSnet Aquila implementation &#8212;
+      full lifecycle delivery from design through deployment and validation.
+    </li>
+    <li>
+      <strong>Abbott DVP Award Winner</strong> &#8212; MES Implementation Excellence, 2024.
+    </li>
+    <li>
+      20+ years&#8217; continuous experience supporting FDA and HPRA regulated pharmaceutical manufacturing operations.
+    </li>
+    <li>
+      Authored, tested and deployed MES recipes and worksheets supporting Electronic Batch Record execution
+      in regulated environments.
+    </li>
+    <li>
+      Supported successful deployment of validated MES recipes and Electronic Batch Records across
+      Immunoassay and Clinical Chemistry manufacturing operations.
+    </li>
+  </ul>
+
+  <!-- ===================== TASK 2: THREE-COLUMN SKILLS MATRIX ===================== -->
+  <h2 class="sh">Core Technical Skills</h2>
+  <div class="skills-cols" role="region" aria-label="Technical skills">
+    <div class="skill-col">
+      <div class="skill-col-head">MES Systems</div>
+      <ul class="skill-col-list">
+        <li>POMSnet Aquila</li>
+        <li>Electronic Batch Records (EBR)</li>
+        <li>Recipe Development</li>
+        <li>Worksheet Development</li>
+        <li>MES Validation</li>
+        <li>Recipe Qualification</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <div class="skill-col-head">Validation &amp; Compliance</div>
+      <ul class="skill-col-list">
+        <li>GMP</li>
+        <li>FDA</li>
+        <li>HPRA</li>
+        <li>Computer System Validation (CSV)</li>
+        <li>Change Control</li>
+        <li>CAPA</li>
+        <li>Risk Assessment</li>
+        <li>SOP Development</li>
+        <li>IQ / OQ / PQ</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <div class="skill-col-head">Software &amp; Data</div>
+      <ul class="skill-col-list">
+        <li>SAP</li>
+        <li>SQL</li>
+        <li>Python</li>
+        <li>Excel</li>
+        <li>Power BI</li>
+        <li>Git</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================== PROFESSIONAL EXPERIENCE ===================== -->
+  <h2 class="sh">Professional Experience</h2>
+
+  <!-- CryptaVitae — compressed to 2 bullets for page budget -->
+  <div class="job">
+    <div class="job-hdr">
+      <span class="job-title-text">Independent Software Development Project</span>
+      <span class="job-date">Jul 2025 &#8211; Present</span>
+    </div>
+    <p class="job-co">CryptaVitae</p>
+    <ul class="job-bullets">
+      <li>Designed and developed a secure record management application applying pharmaceutical-grade auditability, traceability and data integrity principles.</li>
+      <li>Managed full SDLC from requirements and architecture through testing; implemented audit trails and controlled documentation reporting.</li>
+    </ul>
+  </div>
+
+  <hr class="job-sep">
+
+  <!-- Abbott Longford — HERO ROLE: full detail retained -->
+  <div class="job">
+    <div class="job-hdr">
+      <span class="job-title-text">MES Subject Matter Expert / Process Specialist &#8211; POMSnet Aquila</span>
+      <span class="job-date">Feb 2022 &#8211; Aug 2024</span>
+    </div>
+    <p class="job-co">Abbott Diagnostics, Longford</p>
+    <span class="award-badge">Abbott DVP Award &#8212; MES Implementation Excellence 2024</span>
+    <ul class="job-bullets">
+      <li><strong>Lead MES SME</strong> for POMSnet Aquila implementation &#8212; authored, configured, tested and maintained MES recipes and worksheets throughout the full project lifecycle.</li>
+      <li>Delivered and validated <strong>Electronic Batch Records (EBR)</strong> in accordance with GMP, FDA and HPRA regulatory requirements.</li>
+      <li>Managed validation documentation (IQ, OQ, PQ) supporting <strong>Computer System Validation (CSV)</strong> activities to regulatory standard.</li>
+      <li>Executed <strong>SAP and POMSnet system change control</strong>; participated in CAPA, risk assessments and audit readiness preparation.</li>
+      <li>Developed and maintained SOPs and training plans; provided technical training and ongoing support to manufacturing personnel.</li>
+      <li>Operated as cross-functional MES lead across Quality Assurance, Validation, Manufacturing, Engineering and IT.</li>
+    </ul>
+  </div>
+
+  <hr class="job-sep">
+
+  <!-- Abbott Sligo — Process Specialist: compressed to 2 bullets -->
+  <div class="job">
+    <div class="job-hdr">
+      <span class="job-title-text">Process Specialist</span>
+      <span class="job-date">Sep 2024 &#8211; Jul 2025</span>
+    </div>
+    <p class="job-co">Abbott Diagnostics, Sligo</p>
+    <ul class="job-bullets">
+      <li>Supported HIV laboratory data analysis and operational intelligence within a GMP-regulated environment.</li>
+      <li>Developed Excel automation and Python scripting solutions; supported cross-functional project coordination within regulated documentation frameworks.</li>
+    </ul>
+  </div>
+
+  <hr class="job-sep">
+
+  <!-- Abbott Sligo — Solution Prep Lab: compressed to 2 bullets -->
+  <div class="job">
+    <div class="job-hdr">
+      <span class="job-title-text">Solution Preparation Laboratory Specialist</span>
+      <span class="job-date">Feb 2004 &#8211; Jan 2022</span>
+    </div>
+    <p class="job-co">Abbott Diagnostics, Sligo</p>
+    <ul class="job-bullets">
+      <li>Managed laboratory manufacturing processes for large-scale diagnostic reagent production across an 18-year tenure, maintaining cGMP compliance throughout.</li>
+      <li>Maintained batch documentation, inventory tracking and calibration control; trained cross-functional staff in process safety, GMP and quality adherence.</li>
+    </ul>
+  </div>
+
+  <!-- ===================== EDUCATION ===================== -->
+  <h2 class="sh">Education</h2>
+  <div class="edu-row">
+    <strong>Level 8 Certificate in Computing</strong>
+    <span>National College of Ireland &nbsp;|&nbsp; 2023</span>
+  </div>
+  <div class="edu-row">
+    <strong>Higher Certificate in Science &amp; GMP</strong>
+    <span>Atlantic Technological University &nbsp;|&nbsp; 2012</span>
+  </div>
+
+  <!-- ===================== CERTIFICATIONS & AWARDS ===================== -->
+  <h2 class="sh">Certifications &amp; Awards</h2>
+  <ul class="cert-grid">
+    <li>Abbott DVP Award &#8212; MES Excellence, 2024</li>
+    <li>APM Project Management Qualification</li>
+    <li>Lean Six Sigma Yellow Belt</li>
+    <li>Intermediate SQL Certification</li>
+    <li>Intermediate Git Certification</li>
+  </ul>
+
+</div><!-- /page -->
+
+</body>
+</html>
